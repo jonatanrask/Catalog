@@ -1,5 +1,6 @@
 package org.rask.catalog.resources
 
+import org.rask.catalog.dto.CategoryDTO
 import org.rask.catalog.entities.Category
 import org.rask.catalog.services.CategoryService
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,8 +16,8 @@ class CategoryResources {
     private lateinit var service: CategoryService
 
     @GetMapping
-    fun findAll(): ResponseEntity<List<Category>> {
-        val list: List<Category> = service.findAll()
+    fun findAll(): ResponseEntity<List<CategoryDTO>> {
+        val list: List<CategoryDTO> = service.findAll()
         return ResponseEntity.ok(list)
     }
 

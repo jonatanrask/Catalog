@@ -15,9 +15,16 @@ class Category : Serializable {
     @Transient
     private val serialVersionUID: Long = 1L
 
+    constructor()
+
     constructor(id: Long, name: String?) {
         this.id = id
         this.name = name
+    }
+
+    constructor(entity: Category) {
+        this.id = entity.getId()
+        this.name = entity.getName()
     }
 
     fun getId(): Long {
