@@ -6,6 +6,7 @@ import org.rask.catalog.repositories.CategoryRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.util.Optional
 
 @Service
 class CategoryService {
@@ -16,6 +17,13 @@ class CategoryService {
     fun findAll(): List<CategoryDTO> {
         val list: List<Category> = repository.findAll()
         return list.map { CategoryDTO(it) }
+    }
+
+    @Transactional(readOnly = true)
+    fun findById(id: Long): CategoryDTO {
+        val obj: Optional<Category> = repository.findById(id)
+        val entity: Category = obj.get()
+        return CategoryDTO(entity)
     }
 }
 
