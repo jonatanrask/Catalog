@@ -4,8 +4,12 @@ import jakarta.persistence.EntityNotFoundException
 import org.rask.catalog.dto.CategoryDTO
 import org.rask.catalog.entities.Category
 import org.rask.catalog.repositories.CategoryRepository
+import org.rask.catalog.services.exceptions.DatabaseException
 import org.rask.catalog.services.exceptions.ResourceNotFoundException
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.dao.EmptyResultDataAccessException
+import org.springframework.orm.jpa.JpaObjectRetrievalFailureException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.util.Optional
@@ -40,14 +44,27 @@ class CategoryService {
     @Transactional
     fun update(id: Long, categoryDTO: CategoryDTO): CategoryDTO {
         try {
-            var entity: Category = repository.getReferenceById(id)
+            val entity: Category = repository.getReferenceById(id)
             entity.name = categoryDTO.name
             repository.save(entity)
             return CategoryDTO(entity)
         }
-        catch (e: EntityNotFoundException) {
+        catch (e: JpaObjectRetrievalFailureException) {
+            throw ResourceNotFoundException("Id not found: $id")
+        }
+    }
+
+    fun delete(id: Long) {
+        try {
+            repository.deleteById(id)
+        }
+        catch (e: EmptyResultDataAccessException) {
             throw ResourceNotFoundException("Id not found$id")
         }
+        catch (e: DataIntegrityViolationException) {
+            throw DatabaseException("Integrity violation")
+        }
+
     }
 }
 

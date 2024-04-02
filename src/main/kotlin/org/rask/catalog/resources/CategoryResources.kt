@@ -5,6 +5,7 @@ import org.rask.catalog.entities.Category
 import org.rask.catalog.services.CategoryService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -44,6 +45,12 @@ class CategoryResources {
     fun update(@PathVariable id: Long, @RequestBody categoryDTO: CategoryDTO): ResponseEntity<CategoryDTO> {
         val dto = service.update(id, categoryDTO)
         return ResponseEntity.ok().body(dto)
+    }
+
+    @DeleteMapping("/{id}")
+    fun delete(@PathVariable id: Long): ResponseEntity<CategoryDTO> {
+        service.delete(id)
+        return ResponseEntity.noContent().build()
     }
 
 }
