@@ -1,7 +1,7 @@
 package org.rask.catalog.resources.exceptions
 
 import jakarta.servlet.http.HttpServletRequest
-import org.rask.catalog.services.exceptions.EntityNotFoundException
+import org.rask.catalog.services.exceptions.ResourceNotFoundException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
@@ -10,8 +10,8 @@ import java.time.Instant
 
 @ControllerAdvice
 class ResourceExceptionHandler {
-    @ExceptionHandler(EntityNotFoundException::class)
-    fun entityNotFound(e: EntityNotFoundException, request: HttpServletRequest): ResponseEntity<StandardError>{
+    @ExceptionHandler(ResourceNotFoundException::class)
+    fun entityNotFound(e: ResourceNotFoundException, request: HttpServletRequest): ResponseEntity<StandardError>{
         var err: StandardError = StandardError()
         err.timeStamp = Instant.now()
         err.status = HttpStatus.NOT_FOUND.value()

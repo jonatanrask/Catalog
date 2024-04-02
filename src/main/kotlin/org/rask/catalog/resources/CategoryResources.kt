@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -34,9 +35,15 @@ class CategoryResources {
 
     @PostMapping
     fun insert(@RequestBody categoryDTO: CategoryDTO): ResponseEntity<CategoryDTO> {
-        val categoryDTO = service.insert(categoryDTO)
+        val dto = service.insert(categoryDTO)
         val uri: URI = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(categoryDTO.id).toUri()
-        return ResponseEntity.created(uri).body(categoryDTO)
+        return ResponseEntity.created(uri).body(dto)
+    }
+
+    @PutMapping("/{id}")
+    fun update(@PathVariable id: Long, @RequestBody categoryDTO: CategoryDTO): ResponseEntity<CategoryDTO> {
+        val dto = service.update(id, categoryDTO)
+        return ResponseEntity.ok().body(dto)
     }
 
 }

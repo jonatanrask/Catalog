@@ -1,6 +1,6 @@
 package org.rask.catalog.services.exceptions
 
-class EntityNotFoundException : RuntimeException {
+class ResourceNotFoundException : RuntimeException {
 
     constructor(message: String?) : super(message)
     constructor() : super()

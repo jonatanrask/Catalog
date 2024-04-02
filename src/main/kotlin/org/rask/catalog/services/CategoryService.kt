@@ -1,9 +1,10 @@
 package org.rask.catalog.services
 
+import jakarta.persistence.EntityNotFoundException
 import org.rask.catalog.dto.CategoryDTO
 import org.rask.catalog.entities.Category
 import org.rask.catalog.repositories.CategoryRepository
-import org.rask.catalog.services.exceptions.EntityNotFoundException
+import org.rask.catalog.services.exceptions.ResourceNotFoundException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -23,7 +24,7 @@ class CategoryService {
     @Transactional(readOnly = true)
     fun findById(id: Long): CategoryDTO {
         val obj: Optional<Category> = repository.findById(id)
-        val entity: Category = obj.orElseThrow { EntityNotFoundException("Entity not found") }
+        val entity: Category = obj.orElseThrow { ResourceNotFoundException("Entity not found") }
         return CategoryDTO(entity)
     }
 
@@ -34,6 +35,19 @@ class CategoryService {
         entity = repository.save(entity)
         return CategoryDTO(entity)
 
+    }
+
+    @Transactional
+    fun update(id: Long, categoryDTO: CategoryDTO): CategoryDTO {
+        try {
+            var entity: Category = repository.getReferenceById(id)
+            entity.name = categoryDTO.name
+            repository.save(entity)
+            return CategoryDTO(entity)
+        }
+        catch (e: EntityNotFoundException) {
+            throw ResourceNotFoundException("Id not found$id")
+        }
     }
 }
 
