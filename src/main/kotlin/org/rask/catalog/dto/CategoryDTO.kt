@@ -4,38 +4,33 @@ import org.rask.catalog.entities.Category
 import java.io.Serializable
 
 class CategoryDTO : Serializable {
-    private var id: Long = 0
-    private var name: String? = null
+    private var _id: Long = 0
+    private var _name: String? = null
     @Transient
     private val serialVersionUID: Long = 1L
 
     constructor()
 
     constructor(id: Long, name: String?) {
-        this.id = id
-        this.name = name
+        _id = id
+        _name = name
     }
 
-    constructor(entity: Category){
-        this.id = entity.getId()
-        this.name = entity.getName()
+    constructor(entity: Category) : this(entity.id, entity.name)
+
+    var id: Long
+        get() = _id
+        set(value) {
+            _id = value
+        }
+
+    var name: String?
+        get() = _name
+        set(value) {
+            _name = value
+        }
+
+    override fun toString(): String {
+        return "CategoryDTO(id=$_id, name=$_name)"
     }
-
-    fun getId(): Long {
-        return id
-    }
-
-    fun getName(): String? {
-        return name
-    }
-
-    private fun setId(id: Long) {
-        this.id = id
-    }
-
-    private fun setName(name: String?) {
-        this.name = name
-    }
-
-
 }

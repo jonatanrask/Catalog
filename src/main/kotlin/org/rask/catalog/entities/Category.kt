@@ -2,15 +2,16 @@ package org.rask.catalog.entities
 
 import jakarta.persistence.*
 import java.io.Serializable
-import kotlin.jvm.Transient
 
 @Entity
 @Table(name ="tb_category")
 class Category : Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var id: Long = 0
-    private var name: String? = null
+    @field:Column(name = "id")
+    private var _id: Long = 0
+    @field:Column(name = "name")
+    private var _name: String? = null
 
     @Transient
     private val serialVersionUID: Long = 1L
@@ -18,30 +19,26 @@ class Category : Serializable {
     constructor()
 
     constructor(id: Long, name: String?) {
-        this.id = id
-        this.name = name
+        _id = id
+        _name = name
     }
 
     constructor(entity: Category) {
-        this.id = entity.getId()
-        this.name = entity.getName()
+        _id = entity.id
+        _name = entity.name
     }
 
-    fun getId(): Long {
-        return id
-    }
+    var id: Long
+        get() = _id
+        set(value) {
+            _id = value
+        }
 
-    fun getName(): String? {
-        return name
-    }
-
-    private fun setId(id: Long) {
-        this.id = id
-    }
-
-    private fun setName(name: String?) {
-        this.name = name
-    }
+    var name: String?
+        get() = _name
+        set(value) {
+            _name = value
+        }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -49,16 +46,15 @@ class Category : Serializable {
 
         other as Category
 
-        if (id != other.id) return false
-        if (name != other.name) return false
+        if (_id != other._id) return false
+        if (_name != other._name) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = id.hashCode()
-        result = 31 * result + (name?.hashCode() ?: 0)
+        var result = _id.hashCode()
+        result = 31 * result + (_name?.hashCode() ?: 0)
         return result
     }
-
 }

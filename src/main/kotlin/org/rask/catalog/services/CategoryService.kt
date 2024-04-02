@@ -3,6 +3,7 @@ package org.rask.catalog.services
 import org.rask.catalog.dto.CategoryDTO
 import org.rask.catalog.entities.Category
 import org.rask.catalog.repositories.CategoryRepository
+import org.rask.catalog.services.exceptions.EntityNotFoundException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -22,7 +23,7 @@ class CategoryService {
     @Transactional(readOnly = true)
     fun findById(id: Long): CategoryDTO {
         val obj: Optional<Category> = repository.findById(id)
-        val entity: Category = obj.get()
+        val entity: Category = obj.orElseThrow { EntityNotFoundException("Entity not found") }
         return CategoryDTO(entity)
     }
 }
