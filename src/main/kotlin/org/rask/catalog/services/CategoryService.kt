@@ -26,5 +26,14 @@ class CategoryService {
         val entity: Category = obj.orElseThrow { EntityNotFoundException("Entity not found") }
         return CategoryDTO(entity)
     }
+
+    @Transactional
+    fun insert(categoryDTO: CategoryDTO): CategoryDTO {
+        var entity: Category = Category()
+        entity.name = categoryDTO.name
+        entity = repository.save(entity)
+        return CategoryDTO(entity)
+
+    }
 }
 

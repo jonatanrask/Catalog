@@ -6,9 +6,9 @@ import java.io.Serializable
 @Entity
 @Table(name ="tb_category")
 class Category : Serializable {
+    @field:Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @field:Column(name = "id")
     private var _id: Long = 0
     @field:Column(name = "name")
     private var _name: String? = null
