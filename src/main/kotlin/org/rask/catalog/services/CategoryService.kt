@@ -58,9 +58,6 @@ class CategoryService {
         try {
             repository.deleteById(id)
         }
-        catch (e: EmptyResultDataAccessException) {
-            throw ResourceNotFoundException("Id not found$id")
-        }
         catch (e: DataIntegrityViolationException) {
             throw DatabaseException("Integrity violation")
         }

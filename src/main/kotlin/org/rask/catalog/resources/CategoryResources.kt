@@ -24,32 +24,32 @@ class CategoryResources {
 
     @GetMapping
     fun findAll(): ResponseEntity<List<CategoryDTO>> {
-        val list: List<CategoryDTO> = service.findAll()
+        val list: List<CategoryDTO> = this.service.findAll()
         return ResponseEntity.ok(list)
     }
 
     @GetMapping("/{id}")
     fun findById(@PathVariable id: Long): ResponseEntity<CategoryDTO> {
-        val dto: CategoryDTO = service.findById(id)
+        val dto: CategoryDTO = this.service.findById(id)
         return ResponseEntity.ok().body(dto)
     }
 
     @PostMapping
     fun insert(@RequestBody categoryDTO: CategoryDTO): ResponseEntity<CategoryDTO> {
-        val dto = service.insert(categoryDTO)
+        val dto = this.service.insert(categoryDTO)
         val uri: URI = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(categoryDTO.id).toUri()
         return ResponseEntity.created(uri).body(dto)
     }
 
     @PutMapping("/{id}")
     fun update(@PathVariable id: Long, @RequestBody categoryDTO: CategoryDTO): ResponseEntity<CategoryDTO> {
-        val dto = service.update(id, categoryDTO)
+        val dto = this.service.update(id, categoryDTO)
         return ResponseEntity.ok().body(dto)
     }
 
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id: Long): ResponseEntity<CategoryDTO> {
-        service.delete(id)
+        this.service.delete(id)
         return ResponseEntity.noContent().build()
     }
 
