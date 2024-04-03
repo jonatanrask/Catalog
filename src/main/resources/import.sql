@@ -1,8 +1,8 @@
-INSERT INTO tb_category (name) VALUES ('Appliances');
-INSERT INTO tb_category (name) VALUES ('Sports');
-INSERT INTO tb_category (name) VALUES ('Beauty');
-INSERT INTO tb_category (name) VALUES ('Toys');
-INSERT INTO tb_category (name) VALUES ('Jewelry');
-INSERT INTO tb_category (name) VALUES ('Automotive');
-INSERT INTO tb_category (name) VALUES ('Books');
-INSERT INTO tb_category (name) VALUES ('Electronics');
+INSERT INTO tb_category (name, created_at) VALUES ('Appliances', NOW());
+INSERT INTO tb_category (name, created_at) VALUES ('Sports', NOW());
+INSERT INTO tb_category (name, created_at) VALUES ('Beauty', NOW());
+INSERT INTO tb_category (name, created_at) VALUES ('Toys', NOW());
+INSERT INTO tb_category (name, created_at) VALUES ('Jewelry', NOW());
+INSERT INTO tb_category (name, created_at) VALUES ('Automotive', NOW());
+INSERT INTO tb_category (name, created_at) VALUES ('Books', NOW());
+INSERT INTO tb_category (name, created_at) VALUES ('Electronics', NOW());

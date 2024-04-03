@@ -2,6 +2,7 @@ package org.rask.catalog.entities
 
 import jakarta.persistence.*
 import java.io.Serializable
+import java.time.Instant
 
 @Entity
 @Table(name ="tb_category")
@@ -10,8 +11,15 @@ class Category : Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private var _id: Long = 0
+
     @field:Column(name = "name")
     private var _name: String? = null
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private var createdAt: Instant? = null
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private var updatedAt: Instant? = null
 
     @Transient
     private val serialVersionUID: Long = 1L
@@ -39,6 +47,17 @@ class Category : Serializable {
         set(value) {
             _name = value
         }
+
+    @PrePersist
+    fun prePersist(){
+        this.createdAt = Instant.now()
+    }
+
+    @PreUpdate
+    fun preUpdate(){
+        this.updatedAt = Instant.now()
+    }
+
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
