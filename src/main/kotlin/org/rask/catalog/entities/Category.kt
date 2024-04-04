@@ -15,11 +15,11 @@ class Category : Serializable {
     @field:Column(name = "name")
     private var _name: String? = null
 
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private var createdAt: Instant? = null
+    @Column(name = "created_At", columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private var _createdAt: Instant? = null
 
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private var updatedAt: Instant? = null
+    @Column(name = "update_At",columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private var _updatedAt: Instant? = null
 
     @Transient
     private val serialVersionUID: Long = 1L
@@ -46,6 +46,18 @@ class Category : Serializable {
         get() = _name
         set(value) {
             _name = value
+        }
+
+    var createdAt: Instant?
+        get() = _createdAt
+        set(value) {
+            _createdAt = value
+        }
+
+    var updatedAt: Instant?
+        get() = _updatedAt
+        set(value) {
+            _updatedAt = value
         }
 
     @PrePersist

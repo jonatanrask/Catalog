@@ -4,6 +4,11 @@ import org.rask.catalog.dto.CategoryDTO
 import org.rask.catalog.entities.Category
 import org.rask.catalog.services.CategoryService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.PageRequest.*
+import org.springframework.data.domain.Sort
+import org.springframework.data.domain.Sort.Direction
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -12,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 import java.net.URI
@@ -23,8 +29,15 @@ class CategoryResources {
     private lateinit var service: CategoryService
 
     @GetMapping
-    fun findAll(): ResponseEntity<List<CategoryDTO>> {
-        val list: List<CategoryDTO> = this.service.findAll()
+    fun findAll(
+        @RequestParam(value = "page", defaultValue = "0") page: Int,
+        @RequestParam(value = "linesPerPage", defaultValue = "12") linesPerPage: Int,
+        @RequestParam(value = "direction", defaultValue = "ASC") direction: String,
+        @RequestParam(value = "orderBy", defaultValue = "_name") orderBy: String): ResponseEntity<Page<CategoryDTO>> {
+
+        val pageRequest: PageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy)
+
+        val list: Page<CategoryDTO> = this.service.findAllPaged(pageRequest)
         return ResponseEntity.ok(list)
     }
 

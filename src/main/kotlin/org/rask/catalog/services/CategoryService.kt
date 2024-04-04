@@ -9,6 +9,8 @@ import org.rask.catalog.services.exceptions.ResourceNotFoundException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.dao.EmptyResultDataAccessException
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
 import org.springframework.orm.jpa.JpaObjectRetrievalFailureException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -20,8 +22,8 @@ class CategoryService {
     private lateinit var repository: CategoryRepository
 
     @Transactional(readOnly = true)
-    fun findAll(): List<CategoryDTO> {
-        val list: List<Category> = repository.findAll()
+    fun findAllPaged(pageRequest: PageRequest): Page<CategoryDTO> {
+        val list: Page<Category> = repository.findAll(pageRequest)
         return list.map { CategoryDTO(it) }
     }
 
