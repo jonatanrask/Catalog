@@ -10,19 +10,20 @@ class Category : Serializable {
     @field:Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var _id: Long = 0
+    private var _id: Long? = null
 
     @field:Column(name = "name")
     private var _name: String? = null
 
-    @Column(name = "created_At", columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    @field:Column(name = "created_At", columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private var _createdAt: Instant? = null
 
-    @Column(name = "update_At",columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    @field:Column(name = "update_At",columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private var _updatedAt: Instant? = null
 
-    @Transient
-    private val serialVersionUID: Long = 1L
+    companion object {
+        private const val serialVersionUID = 1L
+    }
 
     constructor()
 
@@ -36,7 +37,7 @@ class Category : Serializable {
         _name = entity.name
     }
 
-    var id: Long
+    var id: Long?
         get() = _id
         set(value) {
             _id = value
