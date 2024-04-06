@@ -85,7 +85,7 @@ class Product : Serializable {
         }
 
     val categories: Set<Category>
-        get() = categories
+        get() = _categories
 
     var createdAt: Instant?
         get() = _createdAt

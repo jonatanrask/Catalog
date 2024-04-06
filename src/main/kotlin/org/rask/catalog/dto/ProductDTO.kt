@@ -30,6 +30,7 @@ data class ProductDTO(
 
     constructor(entity: Product, categories: Set<Category>) : this(entity) {
         this.categories = categories.map { CategoryDTO(it) }
+
     }
 }
 

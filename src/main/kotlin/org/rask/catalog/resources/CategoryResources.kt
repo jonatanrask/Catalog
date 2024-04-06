@@ -34,35 +34,32 @@ class CategoryResources {
         @RequestParam(value = "linesPerPage", defaultValue = "12") linesPerPage: Int,
         @RequestParam(value = "direction", defaultValue = "ASC") direction: String,
         @RequestParam(value = "orderBy", defaultValue = "_name") orderBy: String): ResponseEntity<Page<CategoryDTO>> {
-
-        val pageRequest: PageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy)
-
-        val list: Page<CategoryDTO> = this.service.findAllPaged(pageRequest)
-        return ResponseEntity.ok(list)
+        return ResponseEntity
+            .ok(service.findAllPaged(PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy)))
     }
 
     @GetMapping("/{id}")
     fun findById(@PathVariable id: Long): ResponseEntity<CategoryDTO> {
-        val dto: CategoryDTO = this.service.findById(id)
-        return ResponseEntity.ok().body(dto)
+        return ResponseEntity.ok().body(service.findById(id))
     }
 
     @PostMapping
     fun insert(@RequestBody categoryDTO: CategoryDTO): ResponseEntity<CategoryDTO> {
-        val dto = this.service.insert(categoryDTO)
-        val uri: URI = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(categoryDTO.id).toUri()
-        return ResponseEntity.created(uri).body(dto)
+        return ResponseEntity
+            .created(ServletUriComponentsBuilder
+                .fromCurrentRequestUri().path("/{id}")
+                .buildAndExpand(categoryDTO.id).toUri())
+            .body(service.insert(categoryDTO))
     }
 
     @PutMapping("/{id}")
     fun update(@PathVariable id: Long, @RequestBody categoryDTO: CategoryDTO): ResponseEntity<CategoryDTO> {
-        val dto = this.service.update(id, categoryDTO)
-        return ResponseEntity.ok().body(dto)
+        return ResponseEntity.ok().body(service.update(id, categoryDTO))
     }
 
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id: Long): ResponseEntity<CategoryDTO> {
-        this.service.delete(id)
+        service.delete(id)
         return ResponseEntity.noContent().build()
     }
 
