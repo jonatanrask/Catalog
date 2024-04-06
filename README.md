@@ -15,7 +15,6 @@ Este é um projeto Spring Boot em Kotlin que demonstra a organização em camada
 #### Role
 - id: Long
 - authority: String
-- users: List<User>
 
 #### Product
 - id: Long
