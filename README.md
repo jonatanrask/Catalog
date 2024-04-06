@@ -87,29 +87,29 @@ Este é um projeto Spring Boot em Kotlin que demonstra a organização em camada
 
 ### Kanban crud
 
-| A Fazer                                              | Em Progresso           | Concluído                            |
-|------------------------------------------------------|------------------------|--------------------------------------|
-|                                                      |                        | Criação do projeto                   |
-|                                                      |                        | Modelagem da Classe Category         |
-|                                                      |                        | Modelagem da Classe Reource Category |
-|                                                      |                        | Testes no Banco H2                   | 
-|                                                      |                        | Modelagem de transação no JPA        |
-|                                                      |                        | _Seeding_ na base de dados           |
-|                                                      |                        | Modelagem do DTO                     |
-|                                                      |                        | Criação de ambiente no PostMan       |
-|                                                      |                        | Implementar busca por ID             |
-|                                                      |                        | Tratar excessões                     |
-|                                                      |                        | Adicionar método POST                |
-|                                                      |                        | Adicionar método PUT                 |
-|                                                      |                        | Adicionar método DELETE              |
-|                                                      |                        | Adicionar entidades para autitoria   |
-|                                                      |                        | Adicionar Paginação                  |
-|                                                      | Criar Entidade Product |                                      |
-| Criar o mapeamento do JPA/N-N                        |                        |                                      |
-| Criar o DTO do Product                               |                        |                                      |
-| Adionar dos outros objetos relacionados ao Product   |                        |                                      |
-| Adicionar metodos insert, update e delete do product |                        |                                      |
-| Criação completa da entidade Client                  |                        |                                      |
+| A Fazer                                              | Em Progresso | Concluído                                    |
+|------------------------------------------------------|--------------|----------------------------------------------|
+|                                                      |              | Criação do projeto                           |
+|                                                      |              | Modelagem da Classe Category                 |
+|                                                      |              | Modelagem da Classe Reource Category         |
+|                                                      |              | Testes no Banco H2                           | 
+|                                                      |              | Modelagem de transação no JPA                |
+|                                                      |              | _Seeding_ na base de dados                   |
+|                                                      |              | Modelagem do DTO                             |
+|                                                      |              | Criação de ambiente no PostMan               |
+|                                                      |              | Implementar busca por ID                     |
+|                                                      |              | Tratar excessões                             |
+|                                                      |              | Adicionar método POST                        |
+|                                                      |              | Adicionar método PUT                         |
+|                                                      |              | Adicionar método DELETE                      |
+|                                                      |              | Adicionar entidades para autitoria           |
+|                                                      |              | Adicionar Paginação                          |
+|                                                      |              | Criar Entidade Product                       |
+|                                                      |              | Criar o mapeamento do JPA/N-N                |
+|                                                      |              | Criar o DTO do Product                       |
+| Adionar dos outros objetos relacionados ao Product   |              |                                              |
+| Adicionar metodos insert, update e delete do product |              |                                              |
+| Criação completa da entidade Client                  |              |                                              |
 
 ### Kanban de Testes Automatizados
 
