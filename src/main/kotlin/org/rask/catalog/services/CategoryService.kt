@@ -36,7 +36,7 @@ class CategoryService {
 
     @Transactional
     fun insert(categoryDTO: CategoryDTO): CategoryDTO {
-        var entity: Category = Category()
+        var entity = Category()
         entity.name = categoryDTO.name
         entity = repository.save(entity)
         return CategoryDTO(entity)

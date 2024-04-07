@@ -11,7 +11,6 @@ data class ProductDTO(
     val description: String?,
     val price: Double?,
     val imgUrl: String?,
-    val createdAt: Instant?,
     var categories: List<CategoryDTO> = listOf()
 ) : Serializable {
 
@@ -24,8 +23,7 @@ data class ProductDTO(
         name = entity.name,
         description = entity.description,
         price = entity.price,
-        imgUrl = entity.imgUrl,
-        createdAt = entity.createdAt
+        imgUrl = entity.imgUrl
     )
 
     constructor(entity: Product, categories: Set<Category>) : this(entity) {

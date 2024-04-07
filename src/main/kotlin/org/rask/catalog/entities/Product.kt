@@ -30,7 +30,8 @@ class Product : Serializable {
     @JoinTable(name = "tb_product_category",
         joinColumns = arrayOf(JoinColumn(name = "product_id")),
         inverseJoinColumns = arrayOf(JoinColumn(name = "category_id")))
-    private var _categories: Set<Category> = hashSetOf()
+    val _categories: MutableSet<Category> = HashSet()
+
 
     companion object {
         private const val serialVersionUID = 1L
@@ -84,8 +85,9 @@ class Product : Serializable {
             _imgUrl = value
         }
 
-    val categories: Set<Category>
+    val categories: MutableSet<Category>
         get() = _categories
+
 
     var createdAt: Instant?
         get() = _createdAt

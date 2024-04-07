@@ -10,7 +10,7 @@ class Category : Serializable {
     @field:Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var _id: Long? = null
+    private var _id: Long = 0
 
     @field:Column(name = "name")
     private var _name: String? = null
@@ -37,7 +37,7 @@ class Category : Serializable {
         _name = entity.name
     }
 
-    var id: Long?
+    var id: Long
         get() = _id
         set(value) {
             _id = value

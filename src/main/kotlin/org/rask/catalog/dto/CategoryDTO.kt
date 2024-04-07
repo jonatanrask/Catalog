@@ -4,7 +4,7 @@ import org.rask.catalog.entities.Category
 import java.io.Serializable
 
 data class CategoryDTO(
-    val id: Long?,
+    val id: Long,
     val name: String?
 ) : Serializable {
     companion object {
