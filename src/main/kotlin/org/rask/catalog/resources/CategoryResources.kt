@@ -29,13 +29,8 @@ class CategoryResources {
     private lateinit var service: CategoryService
 
     @GetMapping
-    fun findAll(
-        @RequestParam(value = "page", defaultValue = "0") page: Int,
-        @RequestParam(value = "linesPerPage", defaultValue = "12") linesPerPage: Int,
-        @RequestParam(value = "direction", defaultValue = "ASC") direction: String,
-        @RequestParam(value = "orderBy", defaultValue = "_name") orderBy: String): ResponseEntity<Page<CategoryDTO>> {
-        return ResponseEntity
-            .ok(service.findAllPaged(PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy)))
+    fun findAll(pageRequest: PageRequest): ResponseEntity<Page<CategoryDTO>> {
+        return ResponseEntity.ok(service.findAllPaged(pageRequest))
     }
 
     @GetMapping("/{id}")
