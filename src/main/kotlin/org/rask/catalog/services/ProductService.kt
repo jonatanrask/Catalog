@@ -57,6 +57,9 @@ class ProductService {
         try {
             productRepository.deleteById(id)
         }
+        catch (e: JpaObjectRetrievalFailureException) {
+            throw ResourceNotFoundException("Product with ID $id not found")
+        }
         catch (e: DataIntegrityViolationException) {
             throw DatabaseException("Data error occurred while trying to delete a product! $e");
         }
