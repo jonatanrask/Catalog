@@ -43,7 +43,7 @@ Este é um projeto Spring Boot em Kotlin que demonstra a organização em camada
 - [x] Serviço
 - [x] Acesso a dados (Repository)
 - [x] Criar entidades
-- [ ] Configurar perfil de teste do projeto
+- [X] Configurar perfil de teste do projeto
 - [ ] Seeding da base de dados
 - [ ] Criar web services REST
 - [X] Parâmetros de rota @PathVariable
@@ -53,7 +53,7 @@ Este é um projeto Spring Boot em Kotlin que demonstra a organização em camada
 - [X] Padrão DTO
 - [X] CRUD completo
 - [X] Tratamento de exceções
-- [ ] Postman (coleções, ambientes)
+- [X] Postman (coleções, ambientes)
 - [X] Dados de auditoria
 - [X] Paginação de dados
 - [X] Associações entre entidades (N-N)
@@ -75,15 +75,15 @@ Este é um projeto Spring Boot em Kotlin que demonstra a organização em camada
 
 ### Kanban principal
 
-| A Fazer                    | Em Progresso | Concluído |
-|----------------------------|--------------|-----------|
-|                            | Crud         |           |
-| Testes Automatizados       |              |           |
-| Validação e Segurança      |              |           |
-| ORM                        |              |           | 
-| Consulta ao Banco de Dados |              |           |
-| Docker                     |              |           |
-| Implantação CL/CD          |              |           |
+| A Fazer                    | Em Progresso                      | Concluído |
+|----------------------------|-----------------------------------|-----------|
+|                            |                                   | Crud      |
+|                            | Testes Automatizados              |           |
+| Validação e Segurança      |                                   |           |
+| ORM                        |                                   |           | 
+| Consulta ao Banco de Dados |                                   |           |
+| Docker                     |                                   |           |
+| Implantação CL/CD          |                                   |           |
 
 ### Kanban crud
 
@@ -112,33 +112,33 @@ Este é um projeto Spring Boot em Kotlin que demonstra a organização em camada
 
 ### Kanban de Testes Automatizados
 
-| A Fazer                                                           | Em Progresso | Concluído |
-|-------------------------------------------------------------------|--------------|-----------|
-| Primeiro teste na prática com JUnit                               |              |           |
-| Teste deposito não deve fazer nada quando quantia for negativa    |              |           |
-| Implementar padrão de projeto Factory                             |              |           |
-| Teste saque total deve limpar saldo e retornar todo saldo         |              |           |
-| Testes para método withdraw                                       |              |           |
-| Refatoração no Pageable                                           |              |           |
-| Primeiro teste de repository                                      |              |           |
-| Teste cenários do delete                                          |              |           |
-| Implementar Fixtures no JUnit, BeforeEach                         |              |           |
-| Teste save com id nulo                                            |              |           |
-| Começando testes de ProductService, Mockito vs MockBean           |              |           |
-| Primeiro teste, simulando comportamento com Mockito               |              |           |
-| Imports estáticos do Mockito                                      |              |           |
-| Teste delete lança ResourceNotFoundException quando id não existe |              |           |
-| Teste delete lança DatabaseException quando id dependente         |              |           |
-| Simular comportamentos diversos com Mockito                       |              |           |
-| Testando findAllPaged do ProductService                           |              |           |
-| Testes na camada web - Legibilidade e negociação de conteúdo      |              |           |
-| Testando o findById                                               |              |           |
-| Testando o update                                                 |              |           |
-| Simulando outros comportamentos do ProductService                 |              |           |
-| Testes na camada web - Teste de integração                        |              |           |
-| Teste de integração para findAllPaged                             |              |           |
-| Teste de integração na camada web findAll                         |              |           |
-| Teste de integração na camada web update                          |              |           |
+| A Fazer                                                           | Em Progresso                                                                                                               | Concluído                                                                   |
+|-------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+|                                                                   |                                                                                                                            | Primeiro teste na prática com JUnit                                         |
+|                                                                   |                                                                                                                            | Teste deposito não deve fazer nada quando quantia for negativa              |
+|                                                                   | I                                                                                                                          | mplementar padrão de projeto Factory                                        |
+|                                                                   |                                                                                                                            | Teste saque total deve limpar saldo e retornar todo saldo                   |
+|                                                                   |                                                                                                                            | Testes para método withdraw                                                 |
+|                                                                   |                                                                                                                            | Refatoração no Pageable                                                     |
+|                                                                   |                                                                                                                            | Primeiro teste de repository                                                |
+|                                                                   |                                                                                                                            | Teste cenários do delete                                                    |
+|                                                                   |                                                                                                                            | Implementar Fixtures no JUnit, BeforeEach                                   |
+|                                                                   |                                                                                                                            | Teste save com id nulo                                                      |
+|                                                                   | Começando testes de ProductService, Mockito vs MockBean                                                                    |                                                                             |
+| Primeiro teste, simulando comportamento com Mockito               |                                                                                                                            |                                                                             |
+| Imports estáticos do Mockito                                      |                                                                                                                            |                                                                             |
+| Teste delete lança ResourceNotFoundException quando id não existe |                                                                                                                            |                                                                             |
+| Teste delete lança DatabaseException quando id dependente         |                                                                                                                            |                                                                             |
+| Simular comportamentos diversos com Mockito                       |                                                                                                                            |                                                                             |
+| Testando findAllPaged do ProductService                           |                                                                                                                            |                                                                             |
+| Testes na camada web - Legibilidade e negociação de conteúdo      |                                                                                                                            |                                                                             |
+| Testando o findById                                               |                                                                                                                            |                                                                             |
+| Testando o update                                                 |                                                                                                                            |                                                                             |
+| Simulando outros comportamentos do ProductService                 |                                                                                                                            |                                                                             |
+| Testes na camada web - Teste de integração                        |                                                                                                                            |                                                                             |
+| Teste de integração para findAllPaged                             |                                                                                                                            |                                                                             |
+| Teste de integração na camada web findAll                         |                                                                                                                            |                                                                             |
+| Teste de integração na camada web update                          |                                                                                                                            |                                                                             |
 
 ### Kanban de Validações e segurança
 
